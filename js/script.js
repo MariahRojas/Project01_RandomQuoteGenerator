@@ -14,7 +14,41 @@ project 1 - A Random Quote Generator
   Add the `year` property to at least one object in the array.
   Use console.log() to log your array of quotes to the console.
 ***/
+var quotes = [
+  { 
+     quote:  '"It\’s in the arch of my back, The sun of my smile, The ride of my breasts, The grace of my style. I\’m a woman Phenomenally. Phenomenal woman, That\’s me."',
+     source: 'Maya Angelou',
+     citation: 'Cosmopolitan magazine.', 
+     year: '1978'	
+  },
+  {
+     quote: '“Power\’s not given to you. You have to take it.”',
+     source: 'Beyoncé',
+     citation: '',
+     year: ''
+  },
+  {
+     quote: '“When you play me, you play yourself. Don\’t play yourself.” ',
+     source: 'Beyoncé,',
+     citation: 'Song: Dont Hurt Yourself,',
+     year: '2016'
+  },
+  {
+     quote: '"You may not always have a comfortable life and you will not always be able to solve all of the worlds problems at once but dont ever underestimate the impact you can have because history has shown us that courage can be contagious and hope can take on a life of its own." ',
+     source: 'Michelle Obama,',
+     citation: 'Young African Women Leaders Forum,',
+     year: '2011,'
+  },
+  {
+     quote: '“It may be normal, darling; but I\’d rather be natural.” ',
+     source: 'Holly Golightly',
+     citation: 'Breakfast at Tiffany\'s',
+     year: '1961'
+  }
 
+];
+
+console.log(quotes);
 
 
 
@@ -24,6 +58,12 @@ project 1 - A Random Quote Generator
    - Cse the random number to `return` a random quote object from the `quotes` array.
 ***/
 
+function getRandomQuote (){
+  var randomNumber = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNumber];
+};
+
+console.log( getRandomQuote() );
 
 
 
@@ -40,6 +80,16 @@ project 1 - A Random Quote Generator
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
+function printQuote (){
+  var callRandomQuote = getRandomQuote(quotes);
+  var html = '';
+    <p class="quote"> [] </p>
+    <p class="source"> [source here]
+      <span class="citation"> [citation here] </span>
+      <span class="year"> [year here] </span>
+    </p>
+
+}
 
 
 
@@ -50,7 +100,11 @@ project 1 - A Random Quote Generator
   comment.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
+
+
+
