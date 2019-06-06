@@ -16,34 +16,42 @@ project 1 - A Random Quote Generator
 ***/
 var quotes = [
   { 
-     quote:  '"It\’s in the arch of my back, The sun of my smile, The ride of my breasts, The grace of my style. I\’m a woman Phenomenally. Phenomenal woman, That\’s me."',
+     quote:  'It\’s in the arch of my back, The sun of my smile, The ride of my breasts, The grace of my style. I\’m a woman Phenomenally. Phenomenal woman, That\’s me.',
      source: 'Maya Angelou',
-     citation: 'Cosmopolitan magazine.', 
-     year: '1978'	
+     citation: 'Cosmopolitan Magazine', 
+     year: 1978,
+     hasCitation: true,
+     hasYear: true	
   },
   {
-     quote: '“Power\’s not given to you. You have to take it.”',
+     quote: 'Power\’s not given to you. You have to take it.',
      source: 'Beyoncé',
-     citation: '',
-     year: ''
+     hasCitation: false,
+     hasYear: false
   },
   {
-     quote: '“When you play me, you play yourself. Don\’t play yourself.” ',
-     source: 'Beyoncé,',
-     citation: 'Song: Dont Hurt Yourself,',
-     year: '2016'
+     quote: 'When you play me, you play yourself. Don\’t play yourself.',
+     source: 'Beyoncé',
+     citation: 'Dont Hurt Yourself',
+     year: 2016,
+     hasCitation: true,
+     hasYear: true
   },
   {
-     quote: '"You may not always have a comfortable life and you will not always be able to solve all of the worlds problems at once but dont ever underestimate the impact you can have because history has shown us that courage can be contagious and hope can take on a life of its own." ',
-     source: 'Michelle Obama,',
-     citation: 'Young African Women Leaders Forum,',
-     year: '2011,'
+     quote: 'You may not always have a comfortable life and you will not always be able to solve all of the worlds problems at once but dont ever underestimate the impact you can have because history has shown us that courage can be contagious and hope can take on a life of its own.',
+     source: 'Michelle Obama',
+     citation: 'Young African Women Leaders Forum',
+     year: 2011,
+    hasCitation: true,
+    hasYear: true
   },
   {
-     quote: '“It may be normal, darling; but I\’d rather be natural.” ',
+     quote: 'It may be normal, darling; but I\’d rather be natural.',
      source: 'Holly Golightly',
      citation: 'Breakfast at Tiffany\'s',
-     year: '1961'
+     year: 1961,
+     hasCitation: true, 
+     hasYear: true
   }
 
 ];
@@ -80,17 +88,27 @@ console.log( getRandomQuote() );
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
-function printQuote (){
-  var callRandomQuote = getRandomQuote(quotes);
-  var html = '';
-    <p class="quote"> [] </p>
-    <p class="source"> [source here]
-      <span class="citation"> [citation here] </span>
-      <span class="year"> [year here] </span>
-    </p>
+function printQuote ()
+{
+  var callQuote = getRandomQuote();
+  var htmlQuote = '';
+    htmlQuote = htmlQuote + '<p class="quote">' + callQuote.quote + '</p>';
+    htmlQuote = htmlQuote + '<p class="source">' + callQuote.source;
 
-}
+    if (callQuote.hasCitation)
+    {
+      htmlQuote = htmlQuote + '<span class="citation">' + callQuote.citation + '</span>';
+    }
+    
+    if (callQuote.hasYear)
+    {
+     htmlQuote = htmlQuote + '<span class="year">' + callQuote.year + '</span>';    
+    }
 
+    htmlQuote = htmlQuote + '</p>';
+
+    document.getElementById("quote-box").innerHTML = htmlQuote;
+  }
 
 
 /***
@@ -101,7 +119,7 @@ function printQuote (){
 ***/
 
 
-// document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
