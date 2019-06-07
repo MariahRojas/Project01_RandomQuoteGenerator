@@ -20,12 +20,14 @@ var quotes = [
      source: 'Maya Angelou',
      citation: 'Cosmopolitan Magazine', 
      year: 1978,
+     tags: 'Poem',
      hasCitation: true,
      hasYear: true	
   },
   {
      quote: 'Power\’s not given to you. You have to take it.',
      source: 'Beyoncé',
+     tags: 'interview',
      hasCitation: false,
      hasYear: false
   },
@@ -34,14 +36,16 @@ var quotes = [
      source: 'Beyoncé',
      citation: 'Dont Hurt Yourself',
      year: 2016,
+     tags: 'Music',
      hasCitation: true,
      hasYear: true
   },
   {
-     quote: 'You may not always have a comfortable life and you will not always be able to solve all of the worlds problems at once but dont ever underestimate the impact you can have because history has shown us that courage can be contagious and hope can take on a life of its own.',
+     quote: 'Dont ever underestimate the impact you can have because history has shown us that courage can be contagious and hope can take on a life of its own.',
      source: 'Michelle Obama',
      citation: 'Young African Women Leaders Forum',
      year: 2011,
+     tags: 'Politics',
     hasCitation: true,
     hasYear: true
   },
@@ -50,6 +54,7 @@ var quotes = [
      source: 'Holly Golightly',
      citation: 'Breakfast at Tiffany\'s',
      year: 1961,
+     tags: 'Movie',
      hasCitation: true, 
      hasYear: true
   }
@@ -94,7 +99,8 @@ function printQuote ()
   var htmlQuote = '';
     htmlQuote = htmlQuote + '<p class="quote">' + callQuote.quote + '</p>';
     htmlQuote = htmlQuote + '<p class="source">' + callQuote.source;
-
+    //
+      
     if (callQuote.hasCitation)
     {
       htmlQuote = htmlQuote + '<span class="citation">' + callQuote.citation + '</span>';
@@ -104,11 +110,16 @@ function printQuote ()
     {
      htmlQuote = htmlQuote + '<span class="year">' + callQuote.year + '</span>';    
     }
+    if (callQuote.tags)
+    {
+      htmlQuote = htmlQuote + '<span class="tags">' + callQuote.tags + '</span>';
+    }
 
     htmlQuote = htmlQuote + '</p>';
 
     document.getElementById("quote-box").innerHTML = htmlQuote;
   }
+
 
 
 /***
@@ -126,3 +137,15 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 
 
+function random_bg_color() {
+  var x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
+  var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  console.log(bgColor);
+
+  document.body.style.background = bgColor;
+  }
+
+setInterval("printQuote()", 3000);
+setInterval("random_bg_color()", 3000);

@@ -71,6 +71,11 @@ body {
   font-style: normal;
 }
 
+.tags:before {
+  content: ", ";
+  font-style: normal;
+}
+
 #loadQuote {
   position: fixed;
   width: 12em;
@@ -98,7 +103,7 @@ body {
     font-size: 4rem;
   }
   .quote:before, .quote:after {
-    font-size: 6rem;
+    font-size: 4rem;
   }
   .source {
     font-size: 1.25rem;
