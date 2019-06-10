@@ -76,7 +76,7 @@ function printQuote ()
   var htmlQuote = '';
     htmlQuote = htmlQuote + '<p class="quote">' + callQuote.quote + '</p>';
     htmlQuote = htmlQuote + '<p class="source">' + callQuote.source;
-    //
+    
       
     if (callQuote.hasCitation)
     {
@@ -95,7 +95,8 @@ function printQuote ()
     htmlQuote = htmlQuote + '</p>';
 
     document.getElementById("quote-box").innerHTML = htmlQuote;
-    
+
+    random_bg_color();
   }
 
 printQuote();
@@ -112,13 +113,14 @@ function random_bg_color() {
   document.body.style.background = bgColor;
   }
 
-// I called my random_bg_color() within printQuote() so that the quote and the background change at the same time. 
 
-  setInterval("printQuote(random_bg_color())", 20000);
 
-//  The two lines of code for the button upon click will sync, simultaneously changing the color and the quote.
+// This automatically changes the quote.
 
+setInterval("printQuote()", 20000);
+
+// This is the button. 
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-document.getElementById('loadQuote').addEventListener("click", random_bg_color, false);
+
