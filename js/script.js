@@ -3,17 +3,9 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
+// This is an array of objects. The boolean values ran my code properly in case one quote didnt have a citation or a year. 
 
 
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
 var quotes = [
   { 
      quote:  'It\’s in the arch of my back, The sun of my smile, The ride of my breasts, The grace of my style. I\’m a woman Phenomenally. Phenomenal woman, That\’s me.',
@@ -61,15 +53,12 @@ var quotes = [
 
 ];
 
+// I logged in the array to the console by calling `quotes` function. 
+
 console.log(quotes);
 
 
-
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
+// The getRandomQuote function will run and create a random number between 1 and the length of the quote function to return a random quote. 
 
 function getRandomQuote (){
   var randomNumber = Math.floor(Math.random() * quotes.length);
@@ -79,19 +68,7 @@ function getRandomQuote (){
 console.log( getRandomQuote() );
 
 
-
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+// The printQuote function will sync my random quotes to index.html so that my random quote will have the same format of the default quote in index.html. 
 
 function printQuote ()
 {
@@ -118,34 +95,30 @@ function printQuote ()
     htmlQuote = htmlQuote + '</p>';
 
     document.getElementById("quote-box").innerHTML = htmlQuote;
+    
   }
 
+printQuote();
 
+// The random_bg_color function will provide a random background color. 
 
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
+function random_bg_color() {
+  var x = Math.floor(Math.random() * 200);
+  var y = Math.floor(Math.random() * 200);
+  var z = Math.floor(Math.random() * 200);
+  var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  console.log(bgColor);
+ 
+  document.body.style.background = bgColor;
+  }
+
+// I called my random_bg_color() within printQuote() so that the quote and the background change at the same time. 
+
+  setInterval("printQuote(random_bg_color())", 20000);
+
+//  The two lines of code for the button upon click will sync, simultaneously changing the color and the quote.
 
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
-
-
-
-function random_bg_color() {
-  var x = Math.floor(Math.random() * 256);
-  var y = Math.floor(Math.random() * 256);
-  var z = Math.floor(Math.random() * 256);
-  var bgColor = "rgb(" + x + "," + y + "," + z + ")";
-  console.log(bgColor);
-
-  document.body.style.background = bgColor;
-  }
-
-setInterval("printQuote()", 3000);
-setInterval("random_bg_color()", 3000);
+document.getElementById('loadQuote').addEventListener("click", random_bg_color, false);
